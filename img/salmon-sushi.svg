@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240" role="img" aria-label="웃고 있는 연어초밥 캐릭터">
+  <!-- 직접 그린 연어초밥 캐릭터 -->
+  <ellipse cx="160" cy="214" rx="120" ry="14" fill="#7A0C1F" opacity="0.15"/>
+  <rect x="50" y="110" width="220" height="100" rx="48" fill="#FFFFFF" stroke="#7A0C1F" stroke-width="6"/>
+  <path d="M34 112c0-36 26-62 64-62h124c38 0 64 26 64 62v8H34z" fill="#FF8A4C" stroke="#7A0C1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M84 56l26 58M136 52l26 62M188 52l26 62M240 58l22 54" stroke="#FFD9C2" stroke-width="9" stroke-linecap="round"/>
+  <ellipse cx="128" cy="156" rx="7" ry="9" fill="#3A1A1F"/>
+  <ellipse cx="192" cy="156" rx="7" ry="9" fill="#3A1A1F"/>
+  <ellipse cx="104" cy="174" rx="14" ry="8" fill="#FFB3BF"/>
+  <ellipse cx="216" cy="174" rx="14" ry="8" fill="#FFB3BF"/>
+  <path d="M146 172q14 14 28 0" fill="none" stroke="#7A0C1F" stroke-width="5" stroke-linecap="round"/>
+</svg>

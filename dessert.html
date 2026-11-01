@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오늘 뭐먹지? — 디저트 뽑기</title>
+  <link rel="icon" href="img/salmon-sushi.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+  <!-- 스타일 합치기 : 공통 → 페이지 전용 순서 -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/dessert.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="index.html"><img src="img/salmon-sushi.svg" alt="" width="48" height="36">오늘 뭐먹지?</a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="index.html">메인</a></li>
+        <li><a href="roulette.html">메뉴 룰렛</a></li>
+        <li><a href="dessert.html" class="active" aria-current="page">디저트 뽑기</a></li>
+        <li><a href="anju.html">안주</a></li>
+        <li><a href="mukbang.html">먹방</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="page-intro">
+      <h1>디저트 뽑기</h1>
+      <p>레버를 누르면 뽑기통이 흔들리고 캡슐이 하나 굴러 나와요. 뽑은 디저트는 도감에 모여요.</p>
+      <!-- 룰렛 결과에서 ?main=메뉴 로 넘어오면 궁합 힌트 표시 (GET) -->
+      <p class="hint" id="dessert-hint" hidden></p>
+    </section>
+
+    <div class="gacha-layout">
+      <section class="machine-area" aria-label="뽑기통">
+        <div class="machine" id="machine">
+          <div class="dome">
+            <span class="capsule-in"></span><span class="capsule-in"></span><span class="capsule-in"></span>
+            <span class="capsule-in"></span><span class="capsule-in"></span><span class="capsule-in"></span>
+            <span class="capsule-in"></span>
+          </div>
+          <div class="base">
+            <button type="button" id="lever">돌리기</button>
+            <div class="outlet" aria-hidden="true"><div id="drop-capsule"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <article class="card dessert result" id="dessert-result" aria-live="polite">
+        <div class="open-capsule" id="open-capsule" aria-hidden="true">
+          <span class="prize" id="dessert-emoji">❔</span>
+          <span class="cap-top" id="cap-top"></span>
+          <span class="cap-bottom" id="cap-bottom"></span>
+        </div>
+        <h2 id="dessert-name">무엇이 나올까요?</h2>
+        <p id="dessert-msg">레버를 눌러 캡슐을 뽑아 보세요.</p>
+      </article>
+    </div>
+
+    <section class="dogam" id="dogam" aria-labelledby="dogam-title">
+      <div class="dogam-head">
+        <h2 class="section-title" id="dogam-title">디저트 도감</h2>
+        <p class="dogam-count" id="dogam-count"></p>
+      </div>
+      <!-- 목록은 js/data.js 의 DESSERTS 로 자동 생성, 못 뽑은 건 data-got="no" -->
+      <ul class="dogam-list" id="dogam-list"></ul>
+      <p class="master">디저트 마스터 달성! 도감을 전부 채웠어요.</p>
+      <button type="button" class="btn btn-outline" id="dogam-reset">도감 비우기</button>
+    </section>
+
+
+  </main>
+
+  <footer class="site-footer"></footer>
+
+  <div class="mascot" aria-hidden="true">
+    <span class="eye left"></span><span class="eye right"></span>
+    <span class="cheek left"></span><span class="cheek right"></span>
+    <span class="mouth"></span><span class="bubble">냠?</span>
+  </div>
+
+  <audio id="gacha-sound" src="sound/gacha.wav" preload="auto"></audio>
+
+  <!-- [평가 3] 음악 삽입 : 직접 만든 배경음악, 작은 소리로 계속 재생 (js/common.js) -->
+  <audio id="bgm" src="sound/bgm.wav" loop preload="auto"></audio>
+  <button type="button" class="bgm-toggle" id="bgm-toggle" aria-label="배경음악 끄기" aria-pressed="true">♪</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/dessert.js"></script>
+</body>
+</html>

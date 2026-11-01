@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- [평가 1] HTML 기본 구조 : DOCTYPE → html → head → body -->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="오늘 뭐 먹을지 대신 골라 주는 메뉴 룰렛, 디저트 뽑기, 안주 추천 사이트">
+  <title>오늘 뭐먹지? — 메인</title>
+  <link rel="icon" href="img/salmon-sushi.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+  <!-- 스타일 합치기 : 공통 → 페이지 전용 순서 -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <!-- [평가 4] 시맨틱 태그 : header / nav -->
+  <header class="site-header">
+    <a class="logo" href="index.html"><img src="img/salmon-sushi.svg" alt="" width="48" height="36">오늘 뭐먹지?</a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <ul>
+        <!-- [평가 3] 하이퍼링크 (페이지 이동) -->
+        <li><a href="index.html" class="active" aria-current="page">메인</a></li>
+        <li><a href="roulette.html">메뉴 룰렛</a></li>
+        <li><a href="dessert.html">디저트 뽑기</a></li>
+        <li><a href="anju.html">안주</a></li>
+        <li><a href="mukbang.html">먹방</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- [평가 4] 시맨틱 태그 : main / section / article / aside / figure -->
+  <main class="container">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <h1 id="hero-title">배는 고픈데<br>메뉴를 못 고르겠다면</h1>
+        <p>점심, 저녁, 디저트, 술안주까지. 고민은 룰렛이랑 뽑기통에 맡기고 먹기만 하세요.</p>
+        <div class="hero-actions">
+          <a class="btn" href="roulette.html">메뉴 룰렛 돌리기</a>
+          <a class="btn btn-outline" href="dessert.html">디저트 뽑기</a>
+        </div>
+      </div>
+      <!-- [평가 3] 그림 삽입 (직접 그린 SVG) -->
+      <figure class="hero-figure">
+        <img src="img/salmon-sushi.svg" alt="웃고 있는 연어초밥 캐릭터" width="320" height="240">
+        <figcaption>이 사이트의 대표 메뉴, 연어초밥</figcaption>
+      </figure>
+    </section>
+
+    <div class="home-grid">
+      <section aria-labelledby="shortcut-title">
+        <h2 class="section-title" id="shortcut-title">오늘은 뭐부터 정할까요?</h2>
+        <div class="shortcuts">
+          <article class="card shortcut">
+            <span class="shortcut-icon" aria-hidden="true">🎡</span>
+            <h3><a class="stretch" href="roulette.html">메뉴 룰렛</a></h3>
+            <p>쉰 가지 넘는 메뉴 중 하나를 골라 줘요. 다시 돌릴 기회는 세 번.</p>
+          </article>
+          <article class="card shortcut">
+            <span class="shortcut-icon" aria-hidden="true">🍬</span>
+            <h3><a class="stretch" href="dessert.html">디저트 뽑기</a></h3>
+            <p>레버를 돌리면 캡슐에서 디저트가 나와요. 서른 가지 넘는 도감도 채워 보세요.</p>
+          </article>
+          <article class="card shortcut">
+            <span class="shortcut-icon" aria-hidden="true">🍻</span>
+            <h3><a class="stretch" href="anju.html">안주 뭐 먹지</a></h3>
+            <p>술만 고르면 찰떡 안주를 하나 딱 골라 줘요.</p>
+          </article>
+          <article class="card shortcut">
+            <span class="shortcut-icon" aria-hidden="true">📺</span>
+            <h3><a class="stretch" href="mukbang.html">먹방</a></h3>
+            <p>들어올 때마다 다른 먹방 영상이 나와요.</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="home-side">
+        <article class="card today" aria-labelledby="today-title">
+          <h2 id="today-title">오늘의 추천</h2>
+          <p class="today-emoji" id="today-emoji" aria-hidden="true">🍣</p>
+          <p class="today-name" id="today-name">연어초밥</p>
+          <p id="today-comment">새로고침하면 다른 메뉴가 나와요.</p>
+          <a class="btn" id="today-link" href="roulette.html">이걸로 정하기</a>
+        </article>
+
+      </aside>
+    </div>
+
+    <section aria-labelledby="week-title">
+      <h2 class="section-title" id="week-title">이번 주 뭐 먹었지</h2>
+      <!-- [평가 2] TABLE : caption, thead/tbody, th, rowspan, colspan 사용 -->
+      <div class="table-wrap">
+        <table>
+          <caption>이번 주 식단표</caption>
+          <thead>
+            <tr>
+              <th scope="col" rowspan="2">끼니</th>
+              <th scope="colgroup" colspan="5">평일</th>
+              <th scope="colgroup" colspan="2">주말</th>
+            </tr>
+            <tr>
+              <th scope="col">월</th>
+              <th scope="col">화</th>
+              <th scope="col">수</th>
+              <th scope="col">목</th>
+              <th scope="col">금</th>
+              <th scope="col">토</th>
+              <th scope="col">일</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">점심</th>
+              <td>연어초밥</td>
+              <td>엽떡</td>
+              <td>후토마끼</td>
+              <td>육회 비빔밥</td>
+              <td>모듬초밥</td>
+              <td class="cheat" rowspan="2" colspan="2">치팅데이<br>먹고 싶은 거 다</td>
+            </tr>
+            <tr>
+              <th scope="row">저녁</th>
+              <td>허콤</td>
+              <td>회</td>
+              <td>피자랑 스파게티</td>
+              <td>뿌링클</td>
+              <td>마라탕</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer"></footer>
+
+  <!-- 마스코트 : 카드에 마우스를 올리면 입을 벌림 (common.css 7번) -->
+  <div class="mascot" aria-hidden="true">
+    <span class="eye left"></span><span class="eye right"></span>
+    <span class="cheek left"></span><span class="cheek right"></span>
+    <span class="mouth"></span><span class="bubble">냠?</span>
+  </div>
+
+  <!-- [평가 3] 음악 삽입 : 직접 만든 배경음악, 작은 소리로 계속 재생 (js/common.js) -->
+  <audio id="bgm" src="sound/bgm.wav" loop preload="auto"></audio>
+  <button type="button" class="bgm-toggle" id="bgm-toggle" aria-label="배경음악 끄기" aria-pressed="true">♪</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

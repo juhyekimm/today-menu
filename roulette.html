@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오늘 뭐먹지? — 메뉴 룰렛</title>
+  <link rel="icon" href="img/salmon-sushi.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/roulette.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="index.html"><img src="img/salmon-sushi.svg" alt="" width="48" height="36">오늘 뭐먹지?</a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="index.html">메인</a></li>
+        <li><a href="roulette.html" class="active" aria-current="page">메뉴 룰렛</a></li>
+        <li><a href="dessert.html">디저트 뽑기</a></li>
+        <li><a href="anju.html">안주</a></li>
+        <li><a href="mukbang.html">먹방</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="page-intro">
+      <h1>메뉴 룰렛</h1>
+      <p>가운데 버튼을 누르면 룰렛이 돌아가요. 마음에 안 들면 다시 돌릴 수 있지만 기회는 세 번뿐이에요.</p>
+      <!-- 메인 · 먹방 페이지에서 ?pick=메뉴 로 넘어오면 표시 (GET) -->
+      <p class="pick-banner" id="pick-banner" hidden></p>
+    </section>
+
+    <div class="roulette-layout">
+      <section class="wheel-area" aria-label="룰렛판">
+        <p class="now-showing" id="now-showing" aria-hidden="true">무엇이 나올까요?</p>
+        <div class="wheel-box">
+          <div class="pointer" aria-hidden="true"></div>
+          <!-- 칸과 글자는 js/data.js 의 MENUS 목록으로 자동 생성 -->
+          <div id="wheel" role="img" aria-label="메뉴 룰렛판"></div>
+          <button type="button" id="spin">돌리기</button>
+        </div>
+        <p id="chances">남은 기회 3번</p>
+      </section>
+
+      <article class="card result" id="result" aria-live="polite">
+        <p class="result-emoji" id="result-emoji" aria-hidden="true">🍽️</p>
+        <h2 id="result-name">아직 안 골랐어요</h2>
+        <p id="result-comment">룰렛을 돌리면 여기에 오늘의 메뉴가 나와요.</p>
+        <p id="result-pair" hidden>어울리는 디저트는 <strong id="pair-name"></strong>.
+          <a id="pair-link" href="dessert.html">디저트 뽑으러 가기</a></p>
+        <p class="final-msg" id="final-msg" hidden>기회 끝! 고민은 그만, 그냥 이거 드세요.</p>
+        <a class="btn btn-outline" id="restart" href="roulette.html" hidden>처음부터 다시</a>
+      </article>
+    </div>
+
+    <section aria-labelledby="info-title">
+      <h2 class="section-title" id="info-title">룰렛에 들어 있는 메뉴</h2>
+      <details class="menu-details">
+        <summary>전체 메뉴 <span id="menu-count"></span>개 펼쳐 보기</summary>
+        <!-- 표 내용은 js/data.js 의 MENUS 로 자동 생성 (종류별로 rowspan) -->
+        <div class="table-wrap">
+          <table>
+            <caption>종류별 메뉴</caption>
+            <thead>
+              <tr>
+                <th scope="col">종류</th>
+                <th scope="col">메뉴</th>
+                <th scope="col">한 줄 소개</th>
+                <th scope="col">근처 가게</th>
+              </tr>
+            </thead>
+            <tbody id="menu-table"></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+  </main>
+
+  <footer class="site-footer"></footer>
+
+  <div class="mascot" aria-hidden="true">
+    <span class="eye left"></span><span class="eye right"></span>
+    <span class="cheek left"></span><span class="cheek right"></span>
+    <span class="mouth"></span><span class="bubble">냠?</span>
+  </div>
+
+  <!-- 룰렛이 멈출 때 효과음 (직접 만든 소리) -->
+  <audio id="ding" src="sound/ding.wav" preload="auto"></audio>
+
+  <!-- [평가 3] 음악 삽입 : 직접 만든 배경음악, 작은 소리로 계속 재생 (js/common.js) -->
+  <audio id="bgm" src="sound/bgm.wav" loop preload="auto"></audio>
+  <button type="button" class="bgm-toggle" id="bgm-toggle" aria-label="배경음악 끄기" aria-pressed="true">♪</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/roulette.js"></script>
+</body>
+</html>

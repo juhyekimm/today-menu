@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오늘 뭐먹지? — 랜덤 먹방</title>
+  <link rel="icon" href="img/salmon-sushi.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/mukbang.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="index.html"><img src="img/salmon-sushi.svg" alt="" width="48" height="36">오늘 뭐먹지?</a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="index.html">메인</a></li>
+        <li><a href="roulette.html">메뉴 룰렛</a></li>
+        <li><a href="dessert.html">디저트 뽑기</a></li>
+        <li><a href="anju.html">안주</a></li>
+        <li><a href="mukbang.html" class="active" aria-current="page">먹방</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="page-intro">
+      <h1>랜덤 먹방</h1>
+      <p>들어올 때마다 다른 영상이 나오고, 하나가 끝나면 다음 먹방이 이어서 나와요. 밥 먹으면서 틀어 두세요.</p>
+    </section>
+
+    <div class="mukbang-layout">
+      <section class="player-area" aria-labelledby="video-title">
+        <div class="player-frame">
+          <!-- [평가 3] 동영상 삽입 : 유튜브 임베드. enablejsapi=1 로 mukbang.js 가 영상을 바꾸고 이어서 재생 -->
+          <iframe id="player"
+                  src="https://www.youtube.com/embed/Gcakv7G4PBM?enablejsapi=1&amp;playsinline=1&amp;rel=0"
+                  title="먹방 영상"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
+        </div>
+        <h2 id="video-title">먹방 불러오는 중</h2>
+        <div class="player-actions">
+          <button type="button" class="btn" id="next-video">다른 먹방 보기</button>
+          <a class="btn btn-outline" id="want" href="roulette.html">이 메뉴로 정하기</a>
+        </div>
+        <p class="video-status" id="video-status" hidden>지금은 영상을 불러올 수 없어요. 오른쪽 목록에서 먹방을 찾아보세요.</p>
+      </section>
+
+      <aside class="card search-box" aria-labelledby="search-title">
+        <h2 id="search-title">메뉴별 먹방 찾아보기</h2>
+        <!-- [평가 3] 하이퍼링크 : 새 탭으로 유튜브 검색 결과 열기 -->
+        <ul class="search-links">
+          <li><a href="https://www.youtube.com/results?search_query=연어초밥+먹방" target="_blank" rel="noopener">🍣 연어초밥 먹방</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=엽떡+먹방" target="_blank" rel="noopener">🌶️ 엽떡 먹방</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=후토마끼+먹방" target="_blank" rel="noopener">🍱 후토마끼 먹방</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=치킨+먹방" target="_blank" rel="noopener">🍗 치킨 먹방</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=회+먹방" target="_blank" rel="noopener">🐟 회 먹방</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=디저트+먹방" target="_blank" rel="noopener">🍰 디저트 먹방</a></li>
+        </ul>
+      </aside>
+    </div>
+
+  </main>
+
+  <footer class="site-footer"></footer>
+
+  <!-- 먹방 페이지에서는 마스코트도 계속 냠냠 (chomp) -->
+  <div class="mascot chomp" aria-hidden="true">
+    <span class="eye left"></span><span class="eye right"></span>
+    <span class="cheek left"></span><span class="cheek right"></span>
+    <span class="mouth"></span><span class="bubble">냠냠</span>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/mukbang.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>

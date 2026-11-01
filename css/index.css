@@ -1,0 +1,120 @@
+@charset "UTF-8";
+/* =====================================================================
+   index.css — 메인 페이지 전용 (common.css 다음에 불러옴)
+   ===================================================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: clamp(28px, 5vw, 56px);
+  border-radius: var(--radius);
+  background: var(--pink);
+}
+
+.hero h1 {
+  color: var(--red-deep);
+}
+
+.hero-text p {
+  max-width: 26em;
+  font-size: 1.15rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.hero-figure {
+  margin: 0;
+  text-align: center;
+}
+
+.hero-figure img {
+  width: min(320px, 100%);
+  animation: bob 3s ease-in-out infinite;
+}
+
+.hero-figure figcaption {
+  font-size: 0.95rem;
+  color: var(--red-deep);
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-8px) rotate(2deg); }
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+}
+
+.shortcuts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.shortcut h3 a {
+  color: var(--accent-text);
+  text-decoration: none;
+}
+
+.shortcut p {
+  margin: 0;
+}
+
+.shortcut-icon {
+  display: block;
+  font-size: 2.2rem;
+  line-height: 1.2;
+}
+
+.home-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.today {
+  text-align: center;
+}
+
+.today-emoji {
+  margin: 0;
+  font-size: 4rem;
+  line-height: 1.2;
+}
+
+.today-name {
+  margin: 0 0 4px;
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: var(--accent-text);
+}
+
+td.cheat {
+  background: var(--pink);
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  color: var(--red-deep);
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .shortcuts {
+    grid-template-columns: 1fr;
+  }
+}

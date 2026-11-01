@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오늘 뭐먹지? — 안주 뭐 먹지</title>
+  <link rel="icon" href="img/salmon-sushi.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/anju.css">
+</head>
+<!-- class="pocha" : anju.css 에서 공통 색 변수를 포차 테마로 덮어씀 -->
+<body class="pocha">
+
+  <header class="site-header">
+    <a class="logo" href="index.html"><img src="img/salmon-sushi.svg" alt="" width="48" height="36">오늘 뭐먹지?</a>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="index.html">메인</a></li>
+        <li><a href="roulette.html">메뉴 룰렛</a></li>
+        <li><a href="dessert.html">디저트 뽑기</a></li>
+        <li><a href="anju.html" class="active" aria-current="page">안주</a></li>
+        <li><a href="mukbang.html">먹방</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="sign" aria-labelledby="sign-title">
+      <h1 id="sign-title">오늘 안주 뭐 먹지?</h1>
+      <p>오늘 마실 술을 고르면 제일 잘 어울리는 안주를 딱 하나 골라 드려요.</p>
+    </section>
+
+    <div class="anju-layout">
+      <!-- [가산점 2] GET 방식 폼 : 제출하면 주소가 anju.html?drink=soju 처럼 바뀌고,
+           anju.js 가 그 값을 읽어서 결과를 보여 줌 (서버 없이 실제로 동작) -->
+      <form class="card anju-form" action="anju.html" method="get">
+        <h2>주문서</h2>
+        <label for="drink">오늘은 무슨 술?</label>
+        <!-- 술 목록은 js/data.js 의 DRINKS 로 자동 생성 (종류별 optgroup) -->
+        <select id="drink" name="drink" required></select>
+        <button type="submit" class="btn">안주 골라 줘</button>
+      </form>
+
+      <article class="card anju-result" id="anju-result" aria-live="polite">
+        <div id="anju-empty">
+          <p class="big-glass" aria-hidden="true">🍻</p>
+          <h2>아직 주문 전이에요</h2>
+          <p>술을 고르면 여기에 안주가 나와요.</p>
+        </div>
+
+        <div id="anju-filled" hidden>
+          <p class="drink-line"><span id="anju-glass" class="glass" aria-hidden="true">🍶</span> <span id="anju-drink"></span>엔</p>
+          <p class="anju-pick-emoji" id="anju-emoji" aria-hidden="true"></p>
+          <h2 class="anju-pick-name" id="anju-name"></h2>
+          <div class="anju-actions">
+            <button type="button" class="btn btn-outline" id="reroll">다른 안주</button>
+            <button type="button" class="btn" id="cheers">짠! 건배하기</button>
+          </div>
+          <p class="hangover">내일 아침 해장은 <strong id="hangover-name"></strong> 어때요?
+            <a id="hangover-link" href="https://map.naver.com" target="_blank" rel="noopener">근처 가게 찾기</a><br>
+            물 한 잔씩 같이 마시는 것도 잊지 말고요.</p>
+        </div>
+      </article>
+    </div>
+
+    <section aria-labelledby="match-title">
+      <h2 class="section-title" id="match-title">술 × 안주 궁합표</h2>
+      <!-- [평가 2] TABLE : 술 종류마다 rowspan 으로 묶음 -->
+      <div class="table-wrap">
+        <table>
+          <caption>술마다 잘 어울리는 안주</caption>
+          <thead>
+            <tr>
+              <th scope="col">분류</th>
+              <th scope="col">술</th>
+              <th scope="col">어울리는 안주</th>
+            </tr>
+          </thead>
+          <!-- 표 내용은 js/data.js 의 DRINKS 로 자동 생성 (술 종류별 rowspan) -->
+          <tbody id="match-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer"></footer>
+
+  <div class="mascot" aria-hidden="true">
+    <span class="eye left"></span><span class="eye right"></span>
+    <span class="cheek left"></span><span class="cheek right"></span>
+    <span class="mouth"></span><span class="bubble">짠?</span>
+  </div>
+
+  <audio id="cheers-sound" src="sound/cheers.wav" preload="auto"></audio>
+
+  <!-- [평가 3] 음악 삽입 : 직접 만든 배경음악, 작은 소리로 계속 재생 (js/common.js) -->
+  <audio id="bgm" src="sound/bgm.wav" loop preload="auto"></audio>
+  <button type="button" class="bgm-toggle" id="bgm-toggle" aria-label="배경음악 끄기" aria-pressed="true">♪</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/anju.js"></script>
+</body>
+</html>

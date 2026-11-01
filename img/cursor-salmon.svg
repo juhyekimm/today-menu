@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- 직접 그린 연어초밥 커서 (32x32) -->
+  <rect x="4" y="14" width="24" height="12" rx="6" fill="#FFFFFF" stroke="#7A0C1F" stroke-width="2"/>
+  <path d="M3 14c0-4 3-7 7-7h12c4 0 7 3 7 7v1H3z" fill="#FF8A4C" stroke="#7A0C1F" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M10 9l3 5M16 9l3 5M22 9l3 5" stroke="#FFD9C2" stroke-width="2" stroke-linecap="round"/>
+</svg>
